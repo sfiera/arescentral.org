@@ -1,0 +1,11 @@
+//- -*- tab-width: 2; indent-tabs-mode: nil -*-
+.article
+  .header
+    img.avatar(src=article.author.avatar)
+    .author
+      .byline By #{article.author.name}
+      .date(title=article.date.toLocaleString())
+        = article.date.toDateString()
+  h4
+    a(href='/news/' + article.id)= article.title
+  != article.html

@@ -1,0 +1,20 @@
+//- -*- tab-width: 2; indent-tabs-mode: nil -*-
+!!! xml
+feed(xmlns='http://www.w3.org/2005/Atom')
+  title #{site.title} : #{page.title}
+  link(rel='alternate', href='http://' + site.host + page.alternate)
+  link(rel='self', href='http://' + site.host + req.url)
+  updated= page.entries[0].date.toISOString()
+  id http://${site.host}#{req.url}
+  - each entry in page.entries
+    entry
+      title= entry.title
+      updated= entry.date.toISOString()
+      link(rel='alternate', href='http://' + site.host + page.directory + entry.id)
+      author
+        name= entry.author.name
+        email= entry.author.email
+      content(type='xhtml')
+        div(xmlns='http://www.w3.org/1999/xhtml')
+          != entry.html
+      id http://#{site.host}#{page.directory}#{entry.id}
