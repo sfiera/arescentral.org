@@ -21,7 +21,8 @@
   | [download-source]:    http://antares.googlecode.com/files/Antares-Source-0.3.0.zip
 
 h3 Screenshots
-.screenshots
-  - each picture in page.screenshots
-    a(href=picture.href)
-      img(src=picture.src, title=picture.title)
+#antares-screenshots.screenshots
+  :javascript
+    | window.addEvent('domready', function() {
+    |   AresCentral.loadScreenshots('antares-screenshots', '1519223@N24');
+    | });
