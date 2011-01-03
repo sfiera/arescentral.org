@@ -45,5 +45,5 @@ require('./lib/index').register(app, site);
 require('./lib/about').register(app, site);
 require('./lib/antares').register(app, site);
 
-app.listen(8124, '127.0.0.1');
-console.log('Server running at http://127.0.0.1:8124/');
+app.listen(process.env.PORT, '127.0.0.1');
+console.log('Server running at http://127.0.0.1:' + process.env.PORT + '/');
