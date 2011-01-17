@@ -122,10 +122,12 @@ h4
 
 #footer
   +rounded-bottom
-  :margin 0
-  :padding !spacing 100px !spacing 100px
+  :margin !spacing 100px !spacing 100px
+  :padding-bottom !spacing
   :font-size 75%
   :text-align center
+  p
+    :margin 0
 
 p
   :margin 1em
@@ -171,6 +173,7 @@ a
   :background url(/images/license/public-domain.png) top left no-repeat
 
 .article
+  :margin-bottom 3em
   .header
     :float right
     :position relative
@@ -188,6 +191,8 @@ a
       :text-align right
       .byline
         :font-weight bold
+  p, ul, ol
+    :margin-left 2em
 
 .screenshots
   img
