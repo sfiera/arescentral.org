@@ -1,7 +1,5 @@
 // -*- nil; c-basic-offset: 2; tab-width: 2 -*-
 
-!background       = hsl(0, 0%, 60%)
-
 !old-color        = 45, 100%
 !ares-color       = 0, 60%
 !cantharan-color  = 120, 25%
@@ -14,7 +12,9 @@
 !theme-dark       = hsl(!theme-color, 25%)
 !anti-theme       = hsl(0, 0%, 15%)
 
-!light-gray       = hsl(0, 0%, 80%)
+!text             = hsl(0, 0%, 5%)
+
+!light-gray       = hsl(0, 0%, 85%)
 !gray             = hsl(0, 0%, 40%)
 !dark-gray        = hsl(0, 0%, 25%)
 !shadow           = rgba(0, 0, 0, 0.5)
@@ -36,8 +36,8 @@
 
 html
   :font 14px "Droid Sans", sans
-  :background !background
-  :width 670px
+  :background !theme
+  :width 840px
   :padding 0 0 75px 0
   :margin 0 auto
 
@@ -80,6 +80,7 @@ ul.navigation
       :padding 5px 10px
       &:hover
         +gradient
+        :color !theme-light
         :background !gray
   li.current
     a
@@ -93,14 +94,14 @@ ul.navigation
 #main
   +shadow
   +rounded
-  :color !theme
-  :background black
+  :color !text
+  :background white
   :margin 25px 0 0 0
 
 h2, h3
   +gradient
-  :color !anti-theme
-  :background !theme
+  :color !light-gray
+  :background !dark-gray
   :margin 30px 0 0 0
   :padding 5px !spacing
   :clear both
@@ -133,7 +134,7 @@ p
   :margin 1em
 
 a
-  :color !theme-light
+  :color !theme
   :text-decoration none
   &:hover
     :text-decoration underline
@@ -150,7 +151,7 @@ a
 
 .apollo
   :font-size 18px
-  :margin !spacing 100px
+  :margin !spacing 185px
   :padding 20px 0 20px 123px
   :min-height 34px
   :background url(/images/apollo.png) left center no-repeat;
