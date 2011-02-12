@@ -4,10 +4,19 @@
 // and/or modify it under the terms of the MIT License.
 
 var express = require('express');
+var stylus = require('stylus');
 
 require('jade').filters.markdown = require('./lib/util').maruku_markdown;
 
 var app = express.createServer();
+
+var stylusCompile = function(str, path, callback) {
+    stylus(str)
+        .set('filename', path)
+        .set('compress', true)
+        .define('url', stylus.url({paths:[__dirname + '/public']}))
+        .render(callback);
+};
 
 // Configuration the app for both development and production environments.  The development
 // environment will be used by default, which allows for stack traces and debugging information to
@@ -17,7 +26,7 @@ app.configure(function() {
     app.use(express.methodOverride());
     app.use(express.bodyDecoder());
     app.use(app.router);
-    app.use(express.compiler({src: __dirname + '/public', enable: ['sass']}));
+    app.use(stylus.middleware({src: __dirname + '/public', compile: stylusCompile}));
     app.use(express.staticProvider(__dirname + '/public'));
 });
 

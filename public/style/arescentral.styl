@@ -1,0 +1,195 @@
+// -*- nil; c-basic-offset: 2; tab-width: 2 -*-
+
+old-color           = hsl(45, 100%, 50%)
+ares-color          = hsl(0, 60%, 50%)
+cantharan-color     = hsl(120, 25%, 50%)
+ishiman-color       = hsl(190, 75%, 50%)
+bazidanese-color    = hsl(300, 33%, 50%)
+
+theme               = ares-color
+theme-light         = lighten(theme, 10%)
+text-on-theme       = hsl(0, 0%, 15%)
+
+text                = hsl(0, 0%, 5%)
+
+light-gray          = hsl(0, 0%, 85%)
+gray                = hsl(0, 0%, 40%)
+dark-gray           = hsl(0, 0%, 25%)
+shadow-color        = rgba(0, 0, 0, 0.5)
+
+border-radius-size  = 5px
+spacing             = 15px
+
+vendor(prop, args)
+  -webkit-{prop} args
+  -moz-{prop} args
+  {prop} args
+
+shadow()
+  vendor(box-shadow, 0 10px 15px shadow-color)
+
+rounded()
+  vendor(border-radius, border-radius-size)
+
+rounded-top()
+  vendor(border-radius, border-radius-size border-radius-size 0 0)
+
+rounded-bottom()
+  vendor(border-radius, 0 0 border-radius-size border-radius-size)
+
+gradient(color)
+  background color
+  background-image -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.2))
+  background-image -webkit-gradient(linear, left top, left bottom, color-stop(0, transparent), color-stop(1, rgba(0, 0, 0, 0.2)))
+
+html
+  font 14px "Droid Sans", sans
+  background theme
+  width 840px
+  padding 0 0 75px 0
+  margin 0 auto
+
+body
+  margin 0
+  padding 0
+
+#header
+  shadow()
+  rounded-bottom()
+  background black
+
+h1
+  gradient dark-gray
+  font bold 40px "Droid Sans", sans
+  margin 0
+  color light-gray
+  a
+    display block
+    padding 10px spacing
+    color inherit
+    background url(/images/logo.png) left center no-repeat
+    padding-left 64px
+    &:hover
+      text-decoration none
+
+ul.navigation
+  rounded-bottom()
+  display block
+  margin 0
+  padding 5px 10px
+  li
+    display inline
+    a
+      gradient dark-gray
+      color theme
+      text-decoration none
+      padding 5px 10px
+      &:hover
+        gradient gray
+        color theme-light
+  li.current
+    a
+      gradient theme
+      color text-on-theme
+      &:hover
+        gradient theme-light
+
+#main
+  shadow()
+  rounded()
+  color text
+  background white
+  margin 25px 0 0 0
+
+h2, h3
+  gradient dark-gray
+  color light-gray
+  margin 30px 0 0 0
+  padding 5px spacing
+  clear both
+  &:first-child
+    rounded-top()
+
+h2
+  font bold 20px "Droid Sans", sans
+
+h3
+  font bold 16px "Droid Sans", sans
+
+h4
+  margin spacing
+  font bold 16px "Droid Sans", sans
+
+#footer
+  clear both
+  rounded-bottom()
+  margin spacing 100px spacing 100px
+  padding-bottom spacing
+  font-size 75%
+  text-align center
+  p
+    margin 0
+
+p
+  margin 1em
+
+a
+  color theme
+  text-decoration none
+  &:hover
+    text-decoration underline
+  img
+    border 0
+
+.apollo
+  font-size 18px
+  margin spacing 185px
+  padding 20px 0 20px 123px
+  min-height 34px
+  background url(/images/apollo.png) left center no-repeat
+
+license(image)
+  background image top left no-repeat
+  margin 0 0 0 spacing
+  padding 0 0 0 48px
+  min-height 48px
+
+.gpl
+  license url(/images/license/gpl.png)
+
+.mit
+  license url(/images/license/mit.png)
+
+.creative-commons
+  license url(/images/license/creative-commons.png)
+
+.public-domain
+  license url(/images/license/public-domain.png)
+
+.article
+  margin-bottom 3em
+  .header
+    float right
+    position relative
+    height 48px
+    width 200px
+    margin 0 spacing spacing spacing
+    .avatar
+      position absolute
+      top 0
+      right 0
+    .author
+      position absolute
+      top 0
+      right 63px
+      text-align right
+      .byline
+        font-weight bold
+  p, ul, ol
+    margin-left 2em
+
+.screenshots
+  img
+    width 100px
+    height 75px
+    margin spacing 0 0 spacing
